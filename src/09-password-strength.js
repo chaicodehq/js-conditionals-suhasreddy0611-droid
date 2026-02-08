@@ -26,5 +26,48 @@
  * @returns {string} "weak", "medium", "strong", or "very strong"
  */
 export function checkPasswordStrength(password) {
-  // Your code here
+  let criteriaCount = 0
+  if(/[A-Z]/.test(password)){
+    criteriaCount = criteriaCount + 1
+    console.log('capital letter check', /[A-Z]/.test(password))
+    console.log(criteriaCount)
+  }
+  if(/[a-z]/.test(password)){
+    criteriaCount = criteriaCount + 1
+    console.log('small letter check', /[a-z]/.test(password))
+    console.log(criteriaCount)
+  }
+  if(/[0-9]/.test(password)){
+    criteriaCount = criteriaCount + 1
+    console.log('number check ', /[0-9]/.test(password))
+    console.log(criteriaCount)
+  }
+  if(password && password.length >= 8){
+    criteriaCount = criteriaCount + 1
+    console.log('password lenght ', password.length)
+    console.log(criteriaCount)
+  }
+  if(/[^A-Za-z0-9]/.test(password)){
+    criteriaCount = criteriaCount + 1
+    console.log('special characters ', /[^A-Za-z0-9]/.test(password))
+    console.log(criteriaCount)
+  }
+  console.log(criteriaCount)
+  if (criteriaCount <= 1){
+    return "weak"
+  }
+  else if (criteriaCount <=3){
+    return "medium"
+  }
+  else if (criteriaCount === 4){
+    console.log(criteriaCount)
+    return "strong"
+  }
+  else{
+    return "very strong"
+  }
+
+
 }
+
+console.log(checkPasswordStrength('C0mpl3x#Pwd'))
